@@ -1,5 +1,5 @@
 # Description:  
-Facial detection of an image or video using OpenCV.
+Facial detection for an image file or video from your webcam using OpenCV.
 
 # Requirements:
 OpenCV for python  
