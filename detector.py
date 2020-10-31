@@ -4,8 +4,6 @@ class detector():
     
     def __init__(self):
 
-        print(len(sys.argv))
-
         self.faceHarr = "haarcascade_frontalface_default.xml"
         self.catHarr = "haarcascade_frontalcatface.xml"
         
@@ -33,9 +31,9 @@ class detector():
             sys.exit()
 
     # to add border around face  
-    def addBorder(self, detected, image, color: tuple):
+    def addBorder(self, detected, image, color):
         for (x, y, w, h) in detected:
-            cv2.rectangle(image, (x, y), (x + w, y + h), color, thickness = 2)
+            cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
 
     # determine which cascade to return depending on object flag
     def getCascade(self):
