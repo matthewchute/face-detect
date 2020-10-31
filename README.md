@@ -7,7 +7,7 @@ OpenCV for python
 # How to run:
 `python3 detector.py <type> <object-flag> <image-path>`
 
-type | object-flag | image 
+type | object-flag | image-path 
 ------------- | ------------- | -------------
 image | -c or -f | assets/file.png
 video | -c or -f | N/A
