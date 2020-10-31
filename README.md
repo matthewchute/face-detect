@@ -5,19 +5,19 @@ Facial detection for an image file or video from your webcam using OpenCV.
 OpenCV for python  
 
 # How to run:
-`python3 detector.py <type> <object-flag> <image>`
+`python3 detector.py <type> <object-flag> <image-path>`
 
 type | object-flag | image 
 ------------- | ------------- | -------------
-image | -c or -f | file.png
+image | -c or -f | assets/file.png
 video | -c or -f | N/A
 
 # Running the code examples:
 Facial detection of human faces in a file named face.jpg:  
-`python3 detector.py image -f face.jpg`  
+`python3 detector.py image -f assets/face.jpg`  
 
 Facial detection of cat faces in a file named cat.png:  
-`python3 detectior.py image -c cat.png`  
+`python3 detectior.py image -c assets/cat.png`  
 
 Facial detection of human faces using webcam:  
 `python3 detector.py video -f` 
