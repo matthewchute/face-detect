@@ -27,7 +27,7 @@ class detector():
         elif self.type == "video":
             pass
         else:
-            print("Image File Error")
+            print("Image Path Error")
             sys.exit()
 
     # to add border around face  
