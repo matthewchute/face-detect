@@ -1,10 +1,10 @@
 import cv2, os, sys 
 
-# python3 detector.py <type> <obj-flag> <image> 
-
 class detector():
     
     def __init__(self):
+
+        print(len(sys.argv))
 
         self.faceHarr = "haarcascade_frontalface_default.xml"
         self.catHarr = "haarcascade_frontalcatface.xml"
@@ -19,8 +19,6 @@ class detector():
         # verify object flag
         if sys.argv[2] == "-f" or sys.argv[2] == "-c":
             self.obj = sys.argv[2]
-        elif self.type == "video":
-            pass
         else:
             print("Object Error")
             sys.exit()
@@ -31,34 +29,47 @@ class detector():
         elif self.type == "video":
             pass
         else:
-            print("File Error")
+            print("Image File Error")
             sys.exit()
 
-    # to add detection border around face  
+    # to add border around face  
     def addBorder(self, detected, image, color: tuple):
         for (x, y, w, h) in detected:
             cv2.rectangle(image, (x, y), (x + w, y + h), color, thickness = 2)
 
-    # determine which haar to use
-    def whichObject(self):
+    # determine which cascade to return depending on object flag
+    def getCascade(self):
         if self.obj == "-f":
             return cv2.CascadeClassifier(cv2.data.haarcascades + self.faceHarr)
         else:
             return cv2.CascadeClassifier(cv2.data.haarcascades + self.catHarr)
 
 if __name__ == "__main__":
+
     det = detector()
 
+    # facial detection of image:
     if det.type == "image":
         imagecopy = cv2.imread(det.image)
+        cascade = det.getCascade()
         grayscale = cv2.cvtColor(imagecopy, cv2.COLOR_BGR2GRAY)
-        face_cascade = det.whichObject()
-        faces = face_cascade.detectMultiScale(grayscale, 1.3, 4)
+        faces = cascade.detectMultiScale(grayscale, 1.3, 4)
         det.addBorder(faces, imagecopy, (0, 255, 0)) 
         cv2.imshow("Facial Detection", imagecopy)
         cv2.waitKey(0) 
         cv2.destroyAllWindows()
 
+    # facial detection of video:
     else:
-        # to add video 
-        pass
+        video = cv2.VideoCapture(0)
+        cascade = det.getCascade()
+        while True:
+            _, frame = video.read()
+            grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            faces = cascade.detectMultiScale(grayscale, 1.3, 4)
+            det.addBorder(faces, frame, (0, 255, 0))
+            cv2.imshow('Facial Detection', frame)
+            if cv2.waitKey(1) == 27:
+                break
+        video.release()
+        cv2.destroyAllWindows()
