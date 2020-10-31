@@ -1,6 +1,6 @@
 import cv2, os, sys 
 
-# code detection-type obj-flag file 
+# python3 detector.py <type> <obj-flag> <image> 
 
 class detector():
     
