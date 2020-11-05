@@ -9,7 +9,7 @@ Reun this program: `python3 detector.py <type> <object-flag> <image-path>` from 
 
 type | object-flag | image-path 
 ------------- | ------------- | -------------
-image | -c or -f | assets/file.png
+image | -c or -f | ../assets/file.png
 video | -c or -f | N/A
 
 # Running the code examples:
