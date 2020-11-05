@@ -5,7 +5,7 @@ Facial detection on an image file, or of a video from your webcam using OpenCV.
 OpenCV for python  
 
 # `detector.py`  
-Reun this program: `python3 detector.py <type> <object-flag> <image-path>` from src directory.  
+Run this program: `python3 detector.py <type> <object-flag> <image-path>` from src directory.  
 
 type | object-flag | image-path 
 ------------- | ------------- | -------------
